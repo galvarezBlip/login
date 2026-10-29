@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Página de demostración: simulación de inicio de sesión. Ningún dato se envía ni se guarda.">
+  <title>Demo · Simulación de inicio de sesión</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <div class="demo-banner" role="note">
+    <span class="demo-pill">DEMO</span>
+    Simulación de inicio de sesión · No ingreses datos reales
+  </div>
+
+  <main class="wrap">
+    <section class="card" aria-live="polite">
+
+      <!-- Paso 1: Login -->
+      <div class="step is-active" id="step-login">
+        <div class="icon-circle" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+        </div>
+        <h1>Inicia sesión</h1>
+        <p class="subtitle">Accede de forma segura para continuar.</p>
+
+        <form id="form-login" novalidate autocomplete="off">
+          <div class="field">
+            <label for="user">Usuario o correo</label>
+            <input id="user" type="text" inputmode="email" placeholder="usuario@ejemplo.com" autocomplete="off" autocapitalize="off" spellcheck="false">
+            <small class="error" id="err-user"></small>
+          </div>
+
+          <div class="field">
+            <label for="pass">Contraseña</label>
+            <div class="pass-wrap">
+              <input id="pass" type="password" placeholder="••••••••" autocomplete="new-password">
+              <button type="button" class="toggle-pass" id="toggle-pass" aria-label="Mostrar contraseña">Mostrar</button>
+            </div>
+            <small class="error" id="err-pass"></small>
+          </div>
+
+          <div class="row-between">
+            <span class="hint">Cualquier dato funciona en esta demo.</span>
+            <button type="button" class="link" id="forgot">¿Olvidaste tu contraseña?</button>
+          </div>
+
+          <button type="submit" class="btn" id="btn-login">
+            <span class="btn-label">Continuar</span>
+            <span class="spinner" aria-hidden="true"></span>
+          </button>
+        </form>
+      </div>
+
+      <!-- Paso 2: Código de verificación -->
+      <div class="step" id="step-otp">
+        <div class="icon-circle" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></svg>
+        </div>
+        <h1>Verifica tu identidad</h1>
+        <p class="subtitle">Ingresa el código de 6 dígitos que te enviamos.</p>
+
+        <form id="form-otp" novalidate autocomplete="off">
+          <div class="field">
+            <label for="otp">Código de verificación</label>
+            <input id="otp" class="otp-input" type="text" inputmode="numeric" placeholder="000000" autocomplete="one-time-code">
+            <small class="error" id="err-otp"></small>
+          </div>
+
+          <p class="demo-note">🧪 Demo: escribe cualquier número de 6 dígitos.</p>
+
+          <button type="submit" class="btn" id="btn-otp">
+            <span class="btn-label">Verificar</span>
+            <span class="spinner" aria-hidden="true"></span>
+          </button>
+
+          <div class="row-center">
+            <button type="button" class="link" id="resend" disabled>Reenviar código en <span id="countdown">30</span>s</button>
+          </div>
+          <div class="row-center">
+            <button type="button" class="link muted" id="back-login">← Volver</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Paso 3: Éxito -->
+      <div class="step" id="step-success">
+        <div class="icon-circle success" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+        </div>
+        <h1>¡Sesión iniciada!</h1>
+        <p class="subtitle">El inicio de sesión simulado se completó correctamente.</p>
+
+        <a class="btn btn-wa" id="btn-wa" href="#" hidden>Volver a WhatsApp</a>
+        <button type="button" class="btn btn-outline" id="btn-restart">Reiniciar demo</button>
+      </div>
+
+    </section>
+
+    <p class="footer-note">
+      🔒 Página de demostración. Ningún dato se envía, se guarda ni sale de tu dispositivo.
+    </p>
+  </main>
+
+  <div class="toast" id="toast" role="status"></div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
